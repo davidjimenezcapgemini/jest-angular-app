@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginComponent snapshots test should matches the current snapshot with component 1`] = `
+<app-login
+  loginForm={[Function FormGroup]}
+  loginService={[Function LoginService]}
+  spinner="false"
+>
+  <h1>
+    Login View
+  </h1><form
+    class="ng-untouched ng-pristine ng-invalid"
+    novalidate=""
+  >
+    <div
+      class="form-input"
+    >
+      <label
+        class="label"
+      >
+        Username
+      </label>
+      <input
+        class="general-input ng-untouched ng-pristine ng-invalid"
+        formcontrolname="username"
+        type="text"
+      />
+      
+      <span
+        class="error-input"
+      >
+        Required
+      </span>
+    </div>
+    <div
+      class="form-input"
+    >
+      <label
+        class="label"
+      >
+        Password
+      </label>
+      <input
+        class="general-input ng-untouched ng-pristine ng-invalid"
+        formcontrolname="password"
+        type="password"
+      />
+      
+      <span
+        class="error-input"
+      >
+        Required
+      </span>
+    </div>
+    <div
+      class="form-input"
+    >
+      <button
+        class="submit-button"
+        disabled=""
+      >
+        Enter
+      </button>
+    </div>
+  </form>
+</app-login>
+`;

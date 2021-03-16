@@ -1,0 +1,48 @@
+.form-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: 500;
+    line-height: 3;
+    font-size: 16px;
+}
+
+.general-input {
+    font-size: 14px;
+    padding: 12px 5px;
+    outline: none;
+    background-color: #1976d2;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+}
+
+.submit-button {
+    font-size: 14px;
+    padding: 12px 5px;
+    outline: none;
+    background-color: #1976d2;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 40px;
+    font-weight: 600;
+
+    &:disabled {
+        opacity: .6;
+    }
+}
+
+.error-input {
+    color: rgb(221, 0, 49);
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+
+

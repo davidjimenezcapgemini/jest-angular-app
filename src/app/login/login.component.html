@@ -1,0 +1,17 @@
+<h1>Login View</h1>
+
+<form [formGroup]="loginForm">
+    <div class="form-input">
+        <label class="label">Username</label>
+        <input class="general-input" type="text" formControlName="username">
+        <span class="error-input" *ngIf="this.loginForm.get('username')?.errors">Required</span>
+    </div>
+    <div class="form-input">
+        <label class="label">Password</label>
+        <input class="general-input" type="password" formControlName="password">
+        <span class="error-input" *ngIf="this.loginForm.get('password')?.errors">Required</span>
+    </div>
+    <div class="form-input">
+        <button [disabled]="loginForm.invalid" (click)="submit()" class="submit-button">Enter</button>
+    </div>
+</form>

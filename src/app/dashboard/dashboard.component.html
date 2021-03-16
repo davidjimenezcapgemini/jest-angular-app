@@ -1,0 +1,30 @@
+<p>dashboard works!</p>
+
+<section class="cards-section">
+    <div *ngFor="let user of data" class="card-container">
+        <div class="wrapper">
+            <div class="item">
+                <span class="title-label">Nombre: </span>
+                <span>{{user.name}}</span>
+            </div>
+            <div class="item">
+                <span class="title-label">Website: </span>
+                <span>{{user.website}}</span>
+            </div>
+            <div class="item">
+                <span class="title-label">Email: </span>
+                <span>{{user.email}}</span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="item">
+                <span class="title-label">Compañia: </span>
+                <span>{{user.company.name}}</span>
+            </div>
+            <div class="item">
+                <span class="title-label">Dirección: </span>
+                <span>{{user.address.street}}</span>
+            </div>
+        </div>
+    </div>
+</section>
