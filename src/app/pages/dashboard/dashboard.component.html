@@ -1,7 +1,16 @@
 <p>dashboard works!</p>
+<div class="icons-container">
+    <i class="material-icons" (click)="getUsers()" name="autorenew-icon" >autorenew</i>
+    <i *ngIf="selectedCards.length > 0" class="material-icons" (click)="deleteCards()" name="delete-icon" >delete</i>
+</div>
+
+
+<div class="tabs-container">
+    <span *ngFor="let tab of tabs" [ngClass]="{'selected': tab.selected}" class="tab" [hidden]="tab.hidden" (click)="tabClicked(tab.name)">{{tab.name}}</span>
+</div>
 
 <section class="cards-section">
-    <div *ngFor="let user of data" class="card-container">
+    <div *ngFor="let user of (data | filterUser: tabs); let i = index" class="card-container" (click)="selectCard(user.id)" [ngClass]="{ 'selected': getCardSelectedIndex(user.id) >= 0 }">
         <div class="wrapper">
             <div class="item">
                 <span class="title-label">Nombre: </span>
