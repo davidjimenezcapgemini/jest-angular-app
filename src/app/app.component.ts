@@ -13,14 +13,14 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
-  @Output() finishEv: EventEmitter<any> = new EventEmitter();
+  @Output() finishEv: EventEmitter<object> = new EventEmitter();
 
   fireFinish(data: object): void {
     this.finishEv.emit(data);
   }
 
   calculateIva(price: number): number {
-    return price * 0.21;
+    return typeof price === 'number' ? price * 0.21 : 0;
   }
 
   getDataFromSource(): Promise<string> {

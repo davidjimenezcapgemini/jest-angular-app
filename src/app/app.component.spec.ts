@@ -9,6 +9,7 @@ import {} from 'jest-image-snapshot';
 describe('AppComponent functions', () => {
   let http: HttpClient;
   let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -24,16 +25,15 @@ describe('AppComponent functions', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     http = TestBed.inject(HttpClient);
+    component = fixture.componentInstance;
   });
 
   test('should create the app', () => {
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   test(`should have as title 'jest-app'`, () => {
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('jest-app');
+    expect(component.title).toEqual('jest-app');
   });
 
   test('should render title', () => {
@@ -45,11 +45,11 @@ describe('AppComponent functions', () => {
   test('should dispatch an EventEmitter', (done) => {
     const data = { test: true };
     fixture.detectChanges();
-    fixture.componentInstance.finishEv.subscribe((res: any) => {
+    component.finishEv.subscribe((res: any) => {
       expect(res).toEqual(data);
       done();
     });
-    fixture.componentInstance.fireFinish(data);
+    component.fireFinish(data);
   });
 
   test.each([
@@ -57,22 +57,23 @@ describe('AppComponent functions', () => {
     [200, 42]
   ])
   ('should calculates the iva from price param', (price, expected) => {
-    const iva = fixture.componentInstance.calculateIva(price);
+    const iva = component.calculateIva(price);
     expect(iva).toEqual(expected);
   });
 
 
   test('should gets data from observable', async () => {
-    const promise = fixture.componentInstance.getDataFromSource();
+    const promise = component.getDataFromSource();
     const data = await promise;
     expect(data).toEqual('Data from observable');
   });
 
 
   test('should gets data from API', () => {
-    const spy = jest.spyOn(http, 'get').mockReturnValue(new Observable(observer => observer.next('DATA FROM API')));
-    fixture.componentInstance.getDataFromAPI();
-    expect(fixture.componentInstance.data).toEqual('DATA FROM API');
+    const data = 'DATA FROM API';
+    const spy = jest.spyOn(http, 'get').mockReturnValue(new Observable(observer => observer.next(data)));
+    component.getDataFromAPI();
+    expect(component.data).toEqual(data);
     expect(spy).toHaveBeenCalled();
   });
 

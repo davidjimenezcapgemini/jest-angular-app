@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       const user = this.loginForm.get('username')?.value;
       const pass = this.loginForm.get('password')?.value;
       this.loginService.login(user, pass).subscribe((res: any) => {
-        const jwt = res && res.data ? res.data.jwt : null; // Solution: Remove to do exercise
+        const jwt = res && res.data ? res.data.jwt : null;
         this.loginService.setLogged(jwt);
         this.spinner = false;
         this.router.navigate(['dashboard']);
