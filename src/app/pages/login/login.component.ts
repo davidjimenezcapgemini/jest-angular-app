@@ -38,4 +38,21 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  getData(user: any) {
+    const id = user.data.id;
+    if (id < 5) {
+      this.parseData();
+    } else if(id > 5) {
+      this.validateData();
+    }
+  }
+
+  private parseData() {
+    console.log('ParseData');
+  }
+
+  private validateData() {
+    console.log('ValidateData');
+  }
+
 }
