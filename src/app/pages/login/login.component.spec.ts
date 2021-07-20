@@ -2,7 +2,7 @@ import { LoginService } from './../../services/login.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { David, LoginComponent } from './login.component';
+import { LoginComponent } from './login.component';
 import {} from 'jest-image-snapshot';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ describe('LoginComponent snapshots test', () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       imports: [ReactiveFormsModule, RouterTestingModule],
-      providers: [LoginService, David]
+      providers: [LoginService]
     })
     .compileComponents();
   });
@@ -47,7 +47,7 @@ describe('LoginComponent functions', () => {
         await TestBed.configureTestingModule({
         declarations: [ LoginComponent ],
         imports: [ReactiveFormsModule, RouterTestingModule],
-        providers: [{ provide: Router, useClass: RouterStub }, David]
+        providers: [{ provide: Router, useClass: RouterStub }]
         })
         .compileComponents();
     });
