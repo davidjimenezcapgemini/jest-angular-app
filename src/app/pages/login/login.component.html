@@ -15,3 +15,5 @@
         <button [disabled]="loginForm.invalid" (click)="submit()" class="submit-button">Enter</button>
     </div>
 </form>
+
+<div *ngIf="spinner" class="spinner"></div>
