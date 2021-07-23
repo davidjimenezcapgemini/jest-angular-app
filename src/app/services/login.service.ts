@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -9,7 +10,7 @@ export class LoginService {
 
   logged: boolean;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.logged = false;
   }
 
@@ -28,5 +29,27 @@ export class LoginService {
   setLogged(jwt: string): void {
     this.logged = true;
     sessionStorage.setItem('jwt', jwt);
+  }
+
+  getDataFromAPI() {
+    return this.http.get('https://jsonplaceholder.typicode.com/users').pipe(map((res: any) => {
+      const data = [];
+      for (const obj of res.data) {
+        const value = {... obj, modify: true};
+        data.push(value);
+      }
+      return data;
+    }))
+  }
+
+  validateForm(form: any): boolean {
+    const type = form.user.type;
+    let valid = false;
+    if (type === 'admin') {
+      valid = form.user.data.value === 'GESTION' ? true : false;
+    } else {
+      valid = form.user.data.value === 'CONSULTAR' ? true : false;
+    }
+    return valid;
   }
 }

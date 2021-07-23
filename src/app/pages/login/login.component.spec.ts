@@ -1,4 +1,5 @@
-import { LoginService } from './../../services/login.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoginService } from '../../services/login.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -15,8 +16,8 @@ describe('LoginComponent snapshots test', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports: [ReactiveFormsModule, RouterTestingModule],
-      providers: [LoginService]
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientModule],
+      providers: [LoginService, HttpClient]
     })
     .compileComponents();
   });
@@ -46,8 +47,8 @@ describe('LoginComponent functions', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
         declarations: [ LoginComponent ],
-        imports: [ReactiveFormsModule, RouterTestingModule],
-        providers: [{ provide: Router, useClass: RouterStub }]
+        imports: [ReactiveFormsModule, RouterTestingModule, HttpClientModule],
+        providers: [{ provide: Router, useClass: RouterStub }, HttpClient]
         })
         .compileComponents();
     });
